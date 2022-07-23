@@ -18,24 +18,27 @@ int main (){
         getline(cin,input);
         // input += '\n';
         stack<char> Bracket;
+        string answer = "YES";
 
-        for(char bracket_count : input){
-            if (bracket_count == '('){
-                Bracket.push(bracket_count);
+        for(int i = 0; i < input.size(); i++){
+            if (input[i] == '('){
+                Bracket.push(i);
             }
-            else{
-                // if(Bracket.empty()){
-                //     break;
-                // }
+            else if (input[i] == ')' && !Bracket.empty()){
+                
                 Bracket.pop();
             }
+            else {
+                answer = "NO";
+                break;
+            }
+
         }
-            if (!Bracket.empty()){
-            cout << "NO" << '\n';
-           }
-            else{
-         cout << "Yes" << endl;
-    }
+            if(!Bracket.empty()) {
+                answer = "NO";
+            }
+
+            cout << answer << endl;
 
         
     }
